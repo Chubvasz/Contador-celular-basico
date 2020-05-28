@@ -1,4 +1,4 @@
-package com.example.cellcounter
+package com.eduardonp.cellcounter
 
 import io.flutter.embedding.android.FlutterActivity
 
