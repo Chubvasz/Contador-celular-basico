@@ -57,13 +57,11 @@ class _MyHomePageState extends State<MyHomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                FlatButton(
-                  colorBrightness: Brightness.dark,
-                  splashColor: Colors.white,
-                  onPressed: () {_incrementCounterP();}, 
-                  child: Card(
-                    elevation: 10,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+                Card(
+                  elevation: 10,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+                  child: InkWell(
+                    onTap: () {_incrementCounterP();},
                     child: Padding(
                       padding: EdgeInsets.all(12),
                       child: Column(
@@ -82,16 +80,15 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         ],
                       ),
-                    )
+                    ),
                   )
                 ),
-                FlatButton(
-                  colorBrightness: Brightness.dark,
-                  splashColor: Colors.white,
-                  onPressed: () {_incrementCounterNP();}, 
-                  child: Card(
-                    elevation: 10,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+                Padding(padding: EdgeInsets.only(left: 20)),
+                Card(
+                  elevation: 10,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+                  child: InkWell(
+                    onTap: () {_incrementCounterNP();},
                     child: Padding(
                       padding: EdgeInsets.all(12),
                       child: Column(
