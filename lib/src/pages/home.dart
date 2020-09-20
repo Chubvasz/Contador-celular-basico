@@ -115,6 +115,26 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
+            Padding(padding: EdgeInsets.only(top: 60)),
+            Card(
+              elevation: 8,
+              child: Padding(
+                padding: EdgeInsets.all(12),
+                child: Column(
+                  children: [
+                    Text(
+                      'Parasitemia', 
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    Padding(padding: EdgeInsets.only(top: 8,)),
+                    Text(
+                      '200 %',
+                      style: TextStyle(fontSize: 20, ),
+                    )
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
