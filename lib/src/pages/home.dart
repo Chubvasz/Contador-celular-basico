@@ -68,59 +68,9 @@ class _MyHomePageState extends State<MyHomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Card(
-                  elevation: 10,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-                  child: InkWell(
-                    onTap: () {_incrementCounterP();},
-                    child: Padding(
-                      padding: EdgeInsets.all(12),
-                      child: Column(
-                        children: [
-                          Text(
-                            'Eritrocitos\nparasitados',
-                            style: TextStyle( fontSize: 20, color: Colors.purple ),
-                            textAlign: TextAlign.center,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(25),
-                            child: Text(
-                              '$_counterP',
-                              style: TextStyle( fontSize: 40, color: Colors.purple ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
-                ),
+                _crearCardEP(),
                 Padding(padding: EdgeInsets.only(left: 20)),
-                Card(
-                  elevation: 10,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-                  child: InkWell(
-                    onTap: () {_incrementCounterNP();},
-                    child: Padding(
-                      padding: EdgeInsets.all(12),
-                      child: Column(
-                        children: [
-                          Text(
-                            'Eritrocitos\nno parasitados',
-                            style: TextStyle( fontSize: 20, color: Colors.red ),
-                            textAlign: TextAlign.center,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(25),
-                            child: Text(
-                              '$_counterNP',
-                              style: TextStyle( fontSize: 40, color: Colors.red ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                _crearCardENP(),
               ],
             ),
             Padding(padding: EdgeInsets.only(top: 60)),
@@ -129,6 +79,86 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: _cargarBotones(), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+
+  Widget _crearCardEP() {
+    return Card(
+      elevation: 10,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+      child: InkWell(
+        onTap: () {_incrementCounterP();},
+        child: Padding(
+          padding: EdgeInsets.all(12),
+          child: Column(
+            children: [
+              Text(
+                'Eritrocitos\nparasitados',
+                style: TextStyle( fontSize: 20, color: Colors.purple ),
+                textAlign: TextAlign.center,
+              ),
+              Padding(
+                padding: EdgeInsets.all(25),
+                child: Text(
+                  '$_counterP',
+                  style: TextStyle( fontSize: 40, color: Colors.purple ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      )
+    );
+  }
+
+  Widget _crearCardENP() {
+    return Card(
+      elevation: 10,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+      child: InkWell(
+        onTap: () {_incrementCounterNP();},
+        child: Padding(
+          padding: EdgeInsets.all(12),
+          child: Column(
+            children: [
+              Text(
+                'Eritrocitos\nno parasitados',
+                style: TextStyle( fontSize: 20, color: Colors.red ),
+                textAlign: TextAlign.center,
+              ),
+              Padding(
+                padding: EdgeInsets.all(25),
+                child: Text(
+                  '$_counterNP',
+                  style: TextStyle( fontSize: 40, color: Colors.red ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _crearContadorParasitemiaCard() {
+    return Card(
+      elevation: 8,
+      child: Padding(
+        padding: EdgeInsets.all(12),
+        child: Column(
+          children: [
+            Text(
+              'Parasitemia', 
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            Padding(padding: EdgeInsets.only(top: 8,)),
+            Text(
+              '$_counterParasitemia %',
+              style: TextStyle(fontSize: 20, ),
+            )
+          ],
+        ),
+      ),
     );
   }
 
@@ -164,25 +194,5 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget _crearContadorParasitemiaCard() {
-    return Card(
-      elevation: 8,
-      child: Padding(
-        padding: EdgeInsets.all(12),
-        child: Column(
-          children: [
-            Text(
-              'Parasitemia', 
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            Padding(padding: EdgeInsets.only(top: 8,)),
-            Text(
-              '$_counterParasitemia %',
-              style: TextStyle(fontSize: 20, ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
+
 }
