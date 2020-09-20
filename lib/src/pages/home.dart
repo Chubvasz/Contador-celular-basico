@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -12,21 +14,25 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counterP = 0;
   int _counterNP = 0;
+  double _counterParasitemia = 0.0;
 
   void _incrementCounterP() {
     setState(() {
       _counterP++;
+      _countParasitemia();
     });
   }
   void _incrementCounterNP() {
     setState(() {
       _counterNP++;
+      _countParasitemia();
     });
   }
   void _decrementCounterP() {
     setState(() {
       if (_counterP>0) {
         _counterP--;
+        _countParasitemia();
       }
     });
   }
@@ -34,14 +40,19 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       if (_counterNP>0) {
         _counterNP--;
+        _countParasitemia();
       }
     });
   }
   void _reset() {
     setState(() {
-      _counterP=0;
-      _counterNP=0;
+      _counterP           = 0;
+      _counterNP          = 0;
+      _counterParasitemia = 0;
     });
+  }
+  void _countParasitemia() {
+    _counterParasitemia = num.parse(((_counterP*100)/(_counterP+_counterNP)).toStringAsFixed(1));
   }
 
   @override
@@ -113,25 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
             Padding(padding: EdgeInsets.only(top: 60)),
-            Card(
-              elevation: 8,
-              child: Padding(
-                padding: EdgeInsets.all(12),
-                child: Column(
-                  children: [
-                    Text(
-                      'Parasitemia', 
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    Padding(padding: EdgeInsets.only(top: 8,)),
-                    Text(
-                      '200 %',
-                      style: TextStyle(fontSize: 20, ),
-                    )
-                  ],
-                ),
-              ),
-            ),
+            _crearContadorParasitemiaCard(),
           ],
         ),
       ),
@@ -168,6 +161,28 @@ class _MyHomePageState extends State<MyHomePage> {
           onPressed: _reset,
         ),
       ],
+    );
+  }
+
+  Widget _crearContadorParasitemiaCard() {
+    return Card(
+      elevation: 8,
+      child: Padding(
+        padding: EdgeInsets.all(12),
+        child: Column(
+          children: [
+            Text(
+              'Parasitemia', 
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            Padding(padding: EdgeInsets.only(top: 8,)),
+            Text(
+              '$_counterParasitemia %',
+              style: TextStyle(fontSize: 20, ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
