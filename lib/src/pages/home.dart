@@ -1,6 +1,8 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'dart:async';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -12,20 +14,35 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var platformChannel = MethodChannel("cellcounter.eduardo.com/buttonaction");
+
   int _counterP = 0;
   int _counterNP = 0;
   double _counterParasitemia = 0.0;
+
+  void _channel() async {
+    String response;
+    try {
+      response = await platformChannel.invokeMethod("buttonAction", "tap");
+      print("Comunicacion correcta");
+    } on Exception {
+      print("Comunicacion incorrecta");
+      response = "false";
+    }
+  }
 
   void _incrementCounterP() {
     setState(() {
       _counterP++;
       _countParasitemia();
+      _channel();
     });
   }
   void _incrementCounterNP() {
     setState(() {
       _counterNP++;
       _countParasitemia();
+      _channel();
     });
   }
   void _decrementCounterP() {
